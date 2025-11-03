@@ -1,0 +1,49 @@
+.notFound {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--accent-color);
+  margin: 0;
+  line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 6rem;
+  }
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 1rem 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 1.5rem 0 2rem;
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

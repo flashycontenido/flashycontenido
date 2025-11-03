@@ -1,0 +1,36 @@
+.detailPage {
+  background-color: var(--color-brand-yellow);
+  min-height: 100vh;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.gallery {
+  position: sticky;
+  top: 2rem;
+
+  @media (max-width: 968px) {
+    position: relative;
+    top: 0;
+  }
+}
+
+.info {
+  @media (max-width: 968px) {
+    order: -1;
+  }
+}

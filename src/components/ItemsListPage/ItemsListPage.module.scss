@@ -1,0 +1,86 @@
+.itemsSection {
+  width: 98%;
+  margin: auto;
+  background-color: #0169e0;
+  padding: 4rem 2rem;
+  border-radius: 30px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  max-width: 1400px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.mainTitle {
+  font-family: var(--font-bebas-neue), "Impact", sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff872;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-align: start;
+
+  @media (max-width: 1024px) {
+    font-size: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 3rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.itemCard {
+  height: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    height: 350px;
+  }
+
+  @media (max-width: 768px) {
+    height: 320px;
+  }
+
+  @media (max-width: 480px) {
+    height: 280px;
+  }
+}

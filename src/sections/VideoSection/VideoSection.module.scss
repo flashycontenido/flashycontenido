@@ -1,0 +1,376 @@
+.videoSection {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: var(--color-brand-yellow);
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition-base);
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+    min-height: auto;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.title {
+  font-family: var(--font-bebas-neue), "Impact", sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--color-section-text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  transition: color var(--transition-base);
+
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
+}
+
+.carouselWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 750px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 1400px) {
+    max-width: 1400px;
+    height: 700px;
+  }
+
+  @media (max-width: 1200px) {
+    max-width: 1200px;
+    height: 650px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 900px;
+    height: 450px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    height: 380px;
+  }
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 1050px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //opacity: 0.4;
+  //filter: blur(3px);
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+  transform: scale(0.85) rotate(0deg);
+  z-index: 1;
+
+  @media (max-width: 1400px) {
+    width: 950px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 850px;
+  }
+
+  @media (max-width: 768px) {
+    width: min(calc(100vw - 60px), 500px);
+    filter: blur(4px);
+    transform: scale(0.8) rotate(0deg);
+  }
+
+  @media (max-width: 480px) {
+    width: min(calc(100vw - 40px), 350px);
+  }
+
+  &.slideActive {
+    pointer-events: auto;
+    opacity: 1;
+    filter: none;
+    transform: scale(1) rotate(0deg) translateY(-40px);
+    z-index: 20;
+
+    @media (max-width: 768px) {
+      transform: scale(1) rotate(0deg) translateY(-20px);
+    }
+  }
+
+  &.slideLeft {
+    transform: scale(0.85) rotate(-8deg);
+    
+    @media (max-width: 768px) {
+      transform: scale(0.8) rotate(-6deg);
+    }
+  }
+
+  &.slideRight {
+    transform: scale(0.85) rotate(8deg);
+    
+    @media (max-width: 768px) {
+      transform: scale(0.8) rotate(6deg);
+    }
+  }
+
+  // Los slides no activos no deben ser interactivos
+  &:not(.slideActive) {
+    pointer-events: none;
+    
+    * {
+      pointer-events: none !important;
+    }
+  }
+}
+
+.slide > :first-child {
+  width: 100%;
+  height: 90%;
+
+  @media (max-width: 768px) {
+    height: 85%;
+  }
+
+  @media (max-width: 480px) {
+    height: 80%;
+  }
+}
+
+// Sombras amarillas a los lados
+.shadowLeft,
+.shadowRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  pointer-events: none;
+  z-index: 15;
+
+  @media (max-width: 1200px) {
+    width: 150px;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+  }
+}
+
+.shadowLeft {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--overlay-gradient-start) 0%,
+    var(--overlay-gradient-start) 15%,
+    var(--overlay-gradient-mid) 35%,
+    var(--overlay-gradient-end) 60%,
+    var(--overlay-gradient-end) 100%
+  );
+  transition: background var(--transition-base);
+}
+
+.shadowRight {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--overlay-gradient-start) 0%,
+    var(--overlay-gradient-start) 15%,
+    var(--overlay-gradient-mid) 35%,
+    var(--overlay-gradient-end) 60%,
+    var(--overlay-gradient-end) 100%
+  );
+  transition: background var(--transition-base);
+}
+
+// Botones de navegación
+.navButton {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff84;
+  border: none;
+  color: #0169e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+    color: #0454af;
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+.navButtonLeft {
+  left: 2rem;
+
+  @media (max-width: 1024px) {
+    left: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    left: 0.5rem;
+  }
+}
+
+.navButtonRight {
+  right: 2rem;
+
+  @media (max-width: 1024px) {
+    right: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    right: 0.5rem;
+  }
+}
+
+// Indicadores
+.indicators {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  z-index: 25;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
+}
+
+.indicator {
+  // Área clickeable mínima de 48x48px para touch targets (Lighthouse)
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  // Visual indicator dentro del área clickeable
+  &::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-section-text);
+    background-color: transparent;
+    transition: all 0.3s ease, border-color var(--transition-base);
+
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &:hover::after {
+    transform: scale(1.2);
+    background-color: color-mix(in srgb, var(--color-section-text) 30%, transparent);
+  }
+}
+
+.indicatorActive {
+  &::after {
+    background-color: var(--color-section-text);
+    transform: scale(1.3);
+    transition: all 0.3s ease, background-color var(--transition-base);
+  }
+
+  &:hover::after {
+    background-color: var(--color-section-text);
+  }
+}

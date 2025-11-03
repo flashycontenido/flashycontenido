@@ -1,0 +1,106 @@
+.countdown {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shine 3s infinite;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.label {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.number {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 2.5rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.unit {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.separator {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0.25rem;
+  line-height: 1;  
+}
+
+@media (max-width: 768px) {
+  .countdown {
+    padding: 0.75rem 1rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .number {
+    font-size: 1.25rem;
+    min-width: 2rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .unit {
+    font-size: 0.6rem;
+  }
+
+  .separator {
+    font-size: 1.25rem;
+    margin: 0 0.15rem;
+  }
+}

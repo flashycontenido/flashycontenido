@@ -1,0 +1,15 @@
+# robots.txt para Flash y Contenido
+# https://www.flashycontenido.com
+
+User-agent: *
+Allow: /
+Allow: /servicios
+Allow: /servicios/*
+Allow: /paquetes
+Allow: /paquetes/*
+
+# Disallow admin or private pages (if any in the future)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.flashycontenido.com/sitemap.xml

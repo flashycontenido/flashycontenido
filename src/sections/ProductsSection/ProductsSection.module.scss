@@ -1,0 +1,103 @@
+.productsSection {
+  width: 98%;
+  min-height: auto;
+  background-color: #0169e0;
+  padding: 3rem 2rem 4rem 2rem;
+  border-radius: 40px;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    border-radius: 20px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.mainTitle {
+  font-family: var(--font-bebas-neue), "Impact", sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #fff872;
+  line-height: 1;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
+}
+
+.seeMoreButton {
+  align-self: flex-end;
+
+  @media (max-width: 768px) {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+.icon {
+  transition: transform 0.3s ease;
+
+  button:hover & {
+    transform: translateX(4px);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.serviceCard {
+  height: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    height: 350px;
+  }
+
+  @media (max-width: 768px) {
+    height: 320px;
+  }
+
+  @media (max-width: 480px) {
+    height: 280px;
+  }
+}

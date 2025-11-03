@@ -1,0 +1,229 @@
+.main {
+  width: 100%;
+  min-height: 86dvh;
+  background-color: var(--color-brand-yellow);
+  padding: 6rem 5rem 9rem;
+  transition: background-color var(--transition-base);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem 2rem 1.5rem;
+    min-height: auto;
+  }
+}
+
+.text_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    color: var(--color-section-text);
+    font-size: 4rem;
+    width: 45%;
+    font-family: var(--font-bebas-neue), "Impact", sans-serif;
+    line-height: 1.2;
+    padding-top: 2rem;
+    transition: color var(--transition-base);
+
+    @media (max-width: 1024px) {
+      font-size: 3rem;
+      width: 50%;
+      padding-top: 0rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    margin-right: 5rem;
+    color: var(--color-section-text);
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    height: fit-content;
+    transition: color var(--transition-base);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background-color: var(--color-section-text);
+      width: 100%;
+      transition: background-color var(--transition-base);
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  height: 100%;
+  margin: 0 auto;
+  margin-right: -30px;
+  isolation: isolate;
+
+  @media (max-width: 1024px) {
+    height: 500px;
+    margin-right: 0;
+  }
+
+  @media (max-width: 768px) {
+    height: 500px; /* Reducido de 700px */
+    padding: 0;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    height: 450px; /* Reducido de 600px */
+  }
+}
+
+.card1,
+.card2,
+.card3 {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  border: 8px solid white;
+  will-change: transform;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  @media (max-width: 768px) {
+    border: 4px solid white;
+    border-radius: 12px;
+  }
+
+  &:hover {
+    transform: scale(1.05) !important; // Override la rotación original y aplica scale
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+
+    @media (max-width: 768px) {
+      transform: scale(1.03) !important;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Card 1 - Bottom left, largest
+.card1 {
+  width: 50%;
+  height: 65%;
+  bottom: 10%;
+  left: -10%;
+  transform: rotate(5deg);
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    width: 55%;
+    height: 60%;
+    left: -5%;
+  }
+
+  @media (max-width: 768px) {
+    width: 75%;
+    height: 45%;
+    bottom: 0%; /* Ajustado de 5% */
+    left: 0%;
+    transform: rotate(3deg);
+  }
+
+  @media (max-width: 480px) {
+    width: 80%;
+    height: 42%;
+    bottom: 23%; /* Ajustado de 3% */
+  }
+}
+
+// Card 2 - Middle, medium
+.card2 {
+  width: 50%;
+  height: 65%;
+  top: 13%;
+  left: 30%;
+  transform: rotate(-4deg);
+  z-index: 2;
+
+  @media (max-width: 1024px) {
+    width: 52%;
+    height: 60%;
+    left: 28%;
+  }
+
+  @media (max-width: 768px) {
+    width: 70%;
+    height: 40%;
+    top: 28%; /* Ajustado de 32% */
+    left: 15%;
+    transform: rotate(-3deg);
+  }
+
+  @media (max-width: 480px) {
+    width: 75%;
+    height: 38%;
+    top: 6%; /* Ajustado de 30% */
+    left: 12%;
+  }
+}
+
+// Card 3 - Top right, elevated
+.card3 {
+  width: 50%;
+  height: 65%;
+  top: 0;
+  right: -7%;
+  transform: rotate(4deg);
+  z-index: 3;
+
+  @media (max-width: 1024px) {
+    width: 52%;
+    height: 60%;
+    right: -5%;
+  }
+
+  @media (max-width: 768px) {
+    width: 68%;
+    height: 42%;
+    top: 53%; /* Ajustado de 55% */
+    right: 0%;
+    transform: rotate(3deg);
+  }
+
+  @media (max-width: 480px) {
+    width: 72%;
+    height: 40%;
+    top: 29%; /* Ajustado de 57% */
+    right: -2%;
+  }
+}

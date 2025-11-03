@@ -1,0 +1,96 @@
+@use '@/styles/theme/mixins' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100dvh + 5px);
+  min-height: 835px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -84px;
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+  }
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backgroundImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.467),
+    rgba(0, 0, 0, 0.634)
+  );
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+}
+
+.title {
+  font-family: var(--font-bebas-neue), "Impact", sans-serif;
+  font-size: 9.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: #fff872;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 990px) {
+    font-size: 5.5rem;
+  }
+
+  @media (max-width: 429px) {
+    font-size: 4.5rem;
+  }
+}
+
+.description {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  text-align: center;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+
+  @include md {
+    font-size: var(--font-size-xl);
+  }
+}
