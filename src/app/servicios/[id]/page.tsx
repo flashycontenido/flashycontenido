@@ -56,6 +56,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
           <div className={styles.info}>
             <DetailInfoCard
+              serviceId={service.id}
               title={service.title}
               description={service.fullDescription}
               price={service.price}

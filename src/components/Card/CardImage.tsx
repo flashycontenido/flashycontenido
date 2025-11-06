@@ -1,4 +1,4 @@
-import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './CardImage.module.scss';
@@ -21,7 +21,7 @@ interface CardImageProps {
   sizes?: string;
 }
 
-export default function CardImage({
+const CardImage = memo(function CardImage({
   children,
   orientation = 'vertical',
   className = '',
@@ -96,4 +96,6 @@ export default function CardImage({
       {content}
     </div>
   );
-}
+});
+
+export default CardImage;

@@ -3,10 +3,11 @@
 import Button from '@/components/Button/Button';
 import CountdownTimer from '@/components/CountdownTimer/CountdownTimer';
 import { Download } from 'lucide-react';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import styles from './DetailInfoCard.module.scss';
 
 interface DetailInfoCardProps {
+  serviceId: string;
   title: string;
   description: string | ReactNode;
   price: string;
@@ -17,7 +18,8 @@ interface DetailInfoCardProps {
   imagesDownload?: string[];
 }
 
-export default function DetailInfoCard({ title, description, price, realPrice, hasTimer, timerEndDate, includes = [], imagesDownload = [] }: DetailInfoCardProps) {
+export default function DetailInfoCard({ serviceId, title, description, price, realPrice, hasTimer, timerEndDate, includes = [], imagesDownload = [] }: DetailInfoCardProps) {
+  const [isLoading, setIsLoading] = useState(false);
   const leftColumn = includes.slice(0, 4);
   const rightColumn = includes.slice(4, 8);
 
@@ -26,6 +28,34 @@ export default function DetailInfoCard({ title, description, price, realPrice, h
 
   const whatsappComprar = `https://wa.me/34614626806?text=${encodeURIComponent(comprarMessage)}`;
   const whatsappContactar = `https://wa.me/34614626806?text=${encodeURIComponent(contactarMessage)}`;
+
+  const handleStripeCheckout = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ serviceId }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        // Redirigir a Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        alert('Error al crear la sesión de pago');
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al procesar el pago');
+      setIsLoading(false);
+    }
+  };
 
   const handleDownloadImages = async () => {
     if (!imagesDownload || imagesDownload.length === 0) return;
@@ -138,8 +168,16 @@ export default function DetailInfoCard({ title, description, price, realPrice, h
       )}
 
       <div className={styles.buttons}>
-        <Button variant="yellow" size="lg" href={whatsappComprar} target="_blank" rel="noopener noreferrer">
-          Comprar
+        <Button
+          variant="yellow"
+          size="lg"
+          onClick={handleStripeCheckout}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Procesando...' : 'Comprar'}
+        </Button>
+        <Button variant="primary" size="lg" href={whatsappComprar} target="_blank" rel="noopener noreferrer">
+          Comprar por WhatsApp
         </Button>
         <Button variant="contact" size="lg" href={whatsappContactar} target="_blank" rel="noopener noreferrer">
           Contactar

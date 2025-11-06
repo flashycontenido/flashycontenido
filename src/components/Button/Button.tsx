@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
@@ -12,7 +12,7 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'typ
   rel?: string;
 }
 
-export default function Button({
+const Button = memo(function Button({
   children,
   variant = 'primary',
   size = 'md',
@@ -42,4 +42,6 @@ export default function Button({
       {children}
     </button>
   );
-}
+});
+
+export default Button;

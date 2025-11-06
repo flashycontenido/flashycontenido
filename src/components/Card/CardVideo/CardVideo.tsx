@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, useState } from 'react';
+import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, useState, useMemo, useCallback, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Play } from 'lucide-react';
@@ -24,7 +24,7 @@ interface CardVideoProps {
   sizes?: string;
 }
 
-export default function CardVideo({
+const CardVideo = memo(function CardVideo({
   children,
   orientation = 'vertical',
   className = '',
@@ -43,32 +43,34 @@ export default function CardVideo({
 }: CardVideoProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlayClick = (e: React.MouseEvent) => {
+  const embedUrl = useMemo(() => {
+    if (!videoUrl) return '';
+
+    if (videoUrl.includes('youtube.com/watch')) {
+      const videoId = videoUrl.split('v=')[1]?.split('&')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+    if (videoUrl.includes('youtube.com/embed')) {
+      return videoUrl.includes('autoplay=1') ? videoUrl : `${videoUrl}${videoUrl.includes('?') ? '&' : '?'}autoplay=1`;
+    }
+    if (videoUrl.includes('youtu.be/')) {
+      const videoId = videoUrl.split('youtu.be/')[1]?.split('?')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+    return videoUrl;
+  }, [videoUrl]);
+
+  const handlePlayClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     setIsPlaying(true);
-  };
-
-  const getEmbedUrl = (url: string) => {
-    if (url.includes('youtube.com/watch')) {
-      const videoId = url.split('v=')[1]?.split('&')[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
-    if (url.includes('youtube.com/embed')) {
-      return url.includes('autoplay=1') ? url : `${url}${url.includes('?') ? '&' : '?'}autoplay=1`;
-    }
-    if (url.includes('youtu.be/')) {
-      const videoId = url.split('youtu.be/')[1]?.split('?')[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
-    return url;
-  };
+  }, []);
 
   const content = (
     <>
       {isPlaying && videoUrl ? (
         <div className={styles.videoWrapper}>
           <iframe
-            src={getEmbedUrl(videoUrl)}
+            src={embedUrl}
             title={title || 'Video'}
             className={styles.video}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -146,4 +148,6 @@ export default function CardVideo({
       {content}
     </div>
   );
-}
+});
+
+export default CardVideo;

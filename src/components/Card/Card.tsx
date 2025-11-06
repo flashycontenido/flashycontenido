@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import styles from './Card.module.scss';
 
 interface CardProps {
@@ -8,7 +8,7 @@ interface CardProps {
   className?: string;
 }
 
-export default function Card({
+const Card = memo(function Card({
   children,
   variant = 'default',
   padding = 'md',
@@ -19,4 +19,6 @@ export default function Card({
       {children}
     </div>
   );
-}
+});
+
+export default Card;

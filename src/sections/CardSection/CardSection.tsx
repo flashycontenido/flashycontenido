@@ -1,10 +1,7 @@
-import CardImage from '@/components/Card/CardImage';
 import { CloudinaryPresets } from '@/utils/cloudinary';
 import styles from './CardsSection.module.scss';
 import ImageBanner from '@/components/ImageBanner/ImageBanner';
 import Link from 'next/link';
-
-const optimizedImageUrl = CloudinaryPresets.card('https://res.cloudinary.com/djqiqpilh/image/upload/v1761251782/oneabout_ipfby8.jpg');
 
 export default function CardsSection() {
   return (
@@ -20,19 +17,24 @@ export default function CardsSection() {
         title="Al igual que tú, este proyecto nació de un sueño valiente."
         description={
           <>
-            <br/>
-            Hoy acompaño a emprendedores a convertir sus ideas en marcas reales: visibles, memorables y rentables, con diseño, estrategia y alma.
+            <p>
+              Hoy acompaño a emprendedores a convertir sus ideas en marcas reales: visibles, memorables y rentables, con diseño, estrategia y alma.
+            </p>
 
-            <i style={{ fontWeight: '600' }}>Si tu proyecto quiere hacerse inevitable, caminemos juntos. </i><br/><br/> ¿Necesitas darle vida a tu marca o crear una página web? <br/><br/>
+            <i>Si tu proyecto quiere hacerse inevitable, caminemos juntos.</i>
 
-            <Link href='#' style={{ textDecoration: 'underline' }}>
-              <strong>
-                Contáctame
-              </strong>
-            </Link> y Hagamos que tu visión cobre vida.
+            <p>
+              ¿Necesitas darle vida a tu marca o crear una página web?
+            </p>
+
+            <p>
+              <Link href='https://wa.me/34614626806?text=Hola,%20buen%20d%C3%ADa.%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20servicios.' target='_blank' rel='noopener noreferrer'>
+                <strong>Contáctame</strong>
+              </Link> y Hagamos que tu visión cobre vida.
+            </p>
           </>
         }
-        imageSrc="https://res.cloudinary.com/djqiqpilh/image/upload/v1762114380/WhatsApp_Image_2025-11-02_at_9.09.30_PM_hhjjta.jpg"
+        imageSrc={CloudinaryPresets.card("https://res.cloudinary.com/djqiqpilh/image/upload/v1762114380/WhatsApp_Image_2025-11-02_at_9.09.30_PM_hhjjta.jpg")}
         imageAlt="Fundador de Flash y Contenido - Marketing Digital"
       />
       {/*       

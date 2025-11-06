@@ -3,7 +3,6 @@ import Hero from '@/sections/Hero/Hero';
 import { CloudinaryPresets } from '@/utils/cloudinary';
 import CardsSection from '@/sections/CardSection/CardSection';
 import ProductsSection from '@/sections/ProductsSection/ProductsSection';
-import VideoSection from '@/sections/VideoSection/VideoSection';
 import ContactSection from '@/sections/ContactSection/ContactSection';
 
 const heroImageUrl = CloudinaryPresets.hero('https://res.cloudinary.com/djqiqpilh/image/upload/v1760009966/pexels-fauxels-3184300_ocewg9.jpg');

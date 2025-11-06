@@ -25,7 +25,8 @@ export default function Banner({
           src={imageUrl}
           alt="Banner background"
           fill
-          priority
+          priority={false}
+          loading="lazy"
           className={styles.backgroundImage}
           sizes="100vw"
         />
